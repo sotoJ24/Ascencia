@@ -21,7 +21,7 @@
 - 📉 High contributor churn rates
 
 
-## 🏗️🛢 Data Architecture
+## 🏗️📁⇄📁 Data Architecture
 
 ### Hybrid On-Chain + Off-Chain Design
 
