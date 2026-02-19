@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Ascencia Design System - Cyan Theme */
+    --background: 0 0% 0%;                    /* #000000 - Pure black */
+    --foreground: 0 0% 100%;                  /* #FFFFFF - White text */
+    
+    --card: 0 0% 0%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 0 0% 0%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 189 94% 53%;                   /* #22D3EE - Ascencia cyan */
+    --primary-foreground: 0 0% 0%;
+    
+    --secondary: 189 94% 53%;
+    --secondary-foreground: 0 0% 0%;
+    
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 60%;
+    
+    --accent: 189 94% 53%;
+    --accent-foreground: 0 0% 0%;
+    
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --border: 189 94% 53% / 0.15;             /* Cyan border at 15% opacity */
+    --input: 189 94% 53% / 0.2;
+    --ring: 189 94% 53%;
+    
+    --radius: 0rem;                            /* Sharp corners (no border-radius) */
+    
+    --chart-1: 189 94% 53%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Mono', 'Courier New', monospace;
+  }
+  
+  /* Frame-specific adjustments */
+  html,
+  body {
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Ascencia Utilities */
+@layer utilities {
+  /* Cyan text with glow effect */
+  .text-ascencia {
+    @apply text-[#22D3EE];
+  }
+  
+  /* Cyan border */
+  .border-ascencia {
+    border-color: rgba(34, 211, 238, 0.15);
+  }
+  
+  .border-ascencia-bright {
+    border-color: rgba(34, 211, 238, 0.4);
+  }
+  
+  /* Cyan background */
+  .bg-ascencia {
+    background-color: rgba(34, 211, 238, 0.03);
+  }
+  
+  .bg-ascencia-hover {
+    background-color: rgba(34, 211, 238, 0.08);
+  }
+  
+  /* Compact frame layout - max 424px */
+  .frame-container {
+    @apply max-w-[424px] mx-auto;
+  }
+  
+  /* Grid background pattern */
+  .grid-bg {
+    background-image: 
+      linear-gradient(rgba(34, 211, 238, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(34, 211, 238, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  
+  /* Glow effect */
+  .glow-cyan {
+    box-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+  }
+  
+  /* Tracking widest for labels */
+  .tracking-ascencia {
+    letter-spacing: 0.2em;
+  }
+}
+
+/* OnchainKit style overrides for Ascencia theme */
+@layer components {
+  /* Override OnchainKit button styles to match Ascencia */
+  .ock-button-primary {
+    @apply bg-[#22D3EE] text-black font-bold tracking-widest uppercase;
+    border-radius: 0 !important;
+  }
+  
+  .ock-button-secondary {
+    @apply border-[#22D3EE] text-[#22D3EE] bg-transparent;
+    border-radius: 0 !important;
+  }
+  
+  /* Override OnchainKit card styles */
+  .ock-card {
+    @apply bg-black border-[rgba(34,211,238,0.15)];
+    border-radius: 0 !important;
+  }
+  
+  /* Frame-specific: compact spacing */
+  .frame-spacing {
+    @apply px-4 py-3;
+  }
+  
+  /* Compact issue card for frames */
+  .issue-card-compact {
+    @apply p-3 border border-ascencia bg-ascencia transition-all;
+  }
+  
+  .issue-card-compact:hover {
+    @apply border-ascencia-bright bg-ascencia-hover;
+  }
+}
+
+/* Custom scrollbar (optional) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(34, 211, 238, 0.3);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.5);
+}
+
+/* Loading skeleton animation */
+@keyframes pulse-cyan {
+  0%, 100% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.animate-pulse-cyan {
+  animation: pulse-cyan 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Safe area adjustments for frames */
+@supports (padding: max(0px)) {
+  body {
+    padding-left: max(0px, env(safe-area-inset-left));
+    padding-right: max(0px, env(safe-area-inset-right));
+    padding-bottom: max(0px, env(safe-area-inset-bottom));
+  }
+}
